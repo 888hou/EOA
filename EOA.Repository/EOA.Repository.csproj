@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EOA.Data\EOA.Data.csproj" />
+    <ProjectReference Include="..\EOA.Entity\EOA.Entity.csproj" />
+    <ProjectReference Include="..\EOA.Model\EOA.Model.csproj" />
+  </ItemGroup>
+
+</Project>
