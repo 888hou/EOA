@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# EF Core Code First DB迁移文件
+EOA.Data/Migrations/

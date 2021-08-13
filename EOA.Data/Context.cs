@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EOA.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,5 +10,6 @@ namespace EOA.Data
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
 
+        public DbSet<Captcha> Captcha { get; set; }
     }
 }
