@@ -4,6 +4,17 @@
         <name>EOA.Api</name>
     </assembly>
     <members>
+        <member name="T:EOA.Api.Controllers.CaptchaController">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="M:EOA.Api.Controllers.CaptchaController.GetCaptcha">
+            <summary>
+            获取随机验证码
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:EOA.Api.DIService">
             <summary>
             依赖注入
