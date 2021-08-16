@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210816135809_Init0001.cs" />
+    <Compile Remove="Migrations\20210816135809_Init0001.Designer.cs" />
+    <Compile Remove="Migrations\20210816140709_Init0001.cs" />
+    <Compile Remove="Migrations\20210816140709_Init0001.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.18">
       <PrivateAssets>all</PrivateAssets>

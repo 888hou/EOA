@@ -23,9 +23,8 @@ namespace EOA.Api.Controllers
         public async Task<FileContentResult> GetCaptcha()
         {
             var code = await CaptchaHelper.GenerateRandomCaptchaAsync();
-
             var result = await CaptchaHelper.GenerateCaptchaImageAsync(code);
-
+            HttpContext.Session.SetString("LoginCaptcha", code);
             return File(result.CaptchaMemoryStream.ToArray(), "image/png");
         }
     }

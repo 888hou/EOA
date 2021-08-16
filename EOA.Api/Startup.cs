@@ -33,6 +33,7 @@ namespace EOA.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             #region SwaggerGen
             services.AddSwaggerGen(c =>
             {
@@ -94,7 +95,8 @@ namespace EOA.Api
             services.AddDbContext<Context>(options =>
             {
                 //var connectionString = "Server=localhost;Port=3306;Database=YEB;User=root;Password=root;pooling=true;sslmode=none;CharSet=utf8;";
-                var connectionString = Configuration["ConnectionStrings:EOA"];
+                //var connectionString = Configuration["ConnectionStrings:EOA"];
+                var connectionString = Configuration.GetConnectionString("EOA");
                 //var serverVersion = new MySqlServerVersion(new Version(5, 7, 32));
                 options
                     //.UseMySql(connectionString, serverVersion)
@@ -102,6 +104,10 @@ namespace EOA.Api
                     .EnableSensitiveDataLogging() // 在日志中显示参数值
                     .EnableDetailedErrors();      // with debugging (remove for production).
             });
+            #endregion
+
+            #region Session
+            //services.AddSession();
             #endregion
 
             #region 注入Service Repository
@@ -126,6 +132,8 @@ namespace EOA.Api
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
