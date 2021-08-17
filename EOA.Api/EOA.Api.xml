@@ -15,6 +15,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:EOA.Api.Controllers.UserController">
+            <summary>
+            用户
+            </summary>
+        </member>
         <member name="T:EOA.Api.DIService">
             <summary>
             依赖注入

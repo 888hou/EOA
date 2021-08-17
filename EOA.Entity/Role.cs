@@ -8,6 +8,13 @@ namespace EOA.Entity
 {
     public class Role
     {
+        public Role()
+        {
+            Users = new List<User>();
+            Menus = new List<Menu>();
+            UserRoles = new List<UserRole>();
+            RoleMenus = new List<RoleMenu>();
+        }
         [Key]
         public long RoleId { get; set; }
         [Required]
@@ -23,10 +30,10 @@ namespace EOA.Entity
         #region
         public User ModifyUser { get; set; }
         [NotMapped]
-        public ICollection<User> Users { get; set; }
+        public List<User> Users { get; set; }
         public List<UserRole> UserRoles { get; set; }
         [NotMapped]
-        public ICollection<Menu> Menus { get; set; }
+        public List<Menu> Menus { get; set; }
         public List<RoleMenu> RoleMenus { get; set; }
         #endregion
     }

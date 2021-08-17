@@ -8,6 +8,13 @@ namespace EOA.Entity
 {
     public class Menu
     {
+        public Menu()
+        {
+            Children = new List<Menu>();
+            Roles = new List<Role>();
+            RoleMenus = new List<RoleMenu>();
+        }
+
         [Key]
         public long MenuId { get; set; }
         [Required]
@@ -36,11 +43,13 @@ namespace EOA.Entity
         [Required]
         [Column(TypeName = "datetime")]
         public DateTime ModifyDate { get; set; }
+        [NotMapped]
+        public List<Menu> Children { get; set; }
 
         #region
         public User ModifyUser { get; set; }
         [NotMapped]
-        public ICollection<Role> Roles { get; set; }
+        public List<Role> Roles { get; set; }
         public List<RoleMenu> RoleMenus { get; set; }
         #endregion
     }

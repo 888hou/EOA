@@ -8,6 +8,11 @@ namespace EOA.Entity
 {
     public class User
     {
+        public User()
+        {
+            Roles = new List<Role>();
+            UserRoles = new List<UserRole>();
+        }
         [Key]
         public long UserId { get; set; }
         [Required]
@@ -37,10 +42,10 @@ namespace EOA.Entity
         [Column(TypeName = "date")]
         public DateTime BeginDate { get; set; }
         [Column(TypeName = "date")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [Required]
         [Column(TypeName = "date")]
-        public DateTime PromoteDate { get; set; }
+        public DateTime? PromoteDate { get; set; }
         public long? ModifyBy { get; set; }
         [Required]
         [Column(TypeName = "datetime")]
@@ -49,7 +54,7 @@ namespace EOA.Entity
         #region
         public User ModifyUser { get; set; }
         [NotMapped]
-        public ICollection<Role> Roles { get; set; }
+        public List<Role> Roles { get; set; }
         public List<UserRole> UserRoles { get; set; }
         #endregion
     }

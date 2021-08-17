@@ -1,4 +1,8 @@
 using EOA.Data;
+using EOA.Repository;
+using EOA.Service;
+using EOA.Repository.Impl;
+using EOA.Service.Impl;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -133,7 +137,7 @@ namespace EOA.Api
 
             app.UseAuthorization();
 
-            app.UseSession();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -153,8 +157,8 @@ namespace EOA.Api
         /// <returns></returns>
         public static IServiceCollection AddCustomIOC(this IServiceCollection services)
         {
-            //services.AddScoped<IUserRepository, UserRepositoryImpl>();
-            //services.AddScoped<IUserService, UserServiceImpl>();
+            services.AddScoped<IUserRepository, UserRepositoryImpl>();
+            services.AddScoped<IUserService, UserServiceImpl>();
             return services;
         }
     }
