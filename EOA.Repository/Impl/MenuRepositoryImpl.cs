@@ -2,36 +2,34 @@
 using EOA.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EOA.Repository.Impl
 {
-    public class UserRepositoryImpl : IUserRepository
+    public class MenuRepositoryImpl : IMenuRepository
     {
         private readonly Context _context;
-        public UserRepositoryImpl(Context context)
+        public MenuRepositoryImpl(Context context)
         {
             _context = context;
         }
 
-        public async Task<int> Add(User user)
+        public async Task<int> Add(Menu menu)
         {
-            await _context.User
-                .AddAsync(user);
+            await _context.AddAsync(menu);
             return await _context.SaveChangesAsync();
         }
 
         public async Task<int> Del(long id)
         {
-            _context.User.Remove(new User { UserId = id });
+            _context.Remove(new Menu { MenuId = id });
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<int> Edit(User user)
+        public async Task<int> Edit(Menu menu)
         {
-            _context.User.Update(user);
+            _context.Update(menu);
             return await _context.SaveChangesAsync();
         }
     }
