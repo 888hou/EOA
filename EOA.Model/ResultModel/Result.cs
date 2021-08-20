@@ -8,6 +8,6 @@ namespace EOA.Model.ResultModel
     {
         public int Code { get; set; }
         public string Message { get; set; }
-        public Object Obj { get; set; }
+        public dynamic Obj { get; set; }
     }
 }

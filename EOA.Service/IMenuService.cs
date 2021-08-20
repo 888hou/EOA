@@ -11,5 +11,8 @@ namespace EOA.Service
         Task<int> Add(Menu menu);
         Task<int> Del(long id);
         Task<int> Edit(Menu menu);
+        #region
+        Task<List<Menu>> ListMenu();
+        #endregion
     }
 }

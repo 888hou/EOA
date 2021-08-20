@@ -11,5 +11,12 @@ namespace EOA.Repository
         Task<int> Add(Menu menu);
         Task<int> Del(long id);
         Task<int> Edit(Menu menu);
+        #region
+        /// <summary>
+        /// 获取所有有效Menu，并按照SortOrder排序
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Menu>> ListMenus();
+        #endregion
     }
 }

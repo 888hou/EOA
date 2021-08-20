@@ -1,4 +1,5 @@
 ﻿using EOA.Entity;
+using EOA.Helper;
 using EOA.Repository;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,23 @@ namespace EOA.Service.Impl
         public async Task<int> Edit(Menu menu)
         {
             return await _menuRepository.Edit(menu);
+        }
+
+        public async Task<List<Menu>> ListMenu()
+        {
+            List<Menu> menus = await _menuRepository.ListMenus();
+            var data = menus.ToTree<Menu>((r, c) =>
+            {
+                return c.ParentId == 0;
+            }, (r, c) =>
+            {
+                return c.ParentId == r.MenuId;
+            }, (r, dataList) =>
+            {
+                r.Children = r.Children ?? new List<Menu>();
+                r.Children.AddRange(dataList);
+            });
+            return data;
         }
     }
 }

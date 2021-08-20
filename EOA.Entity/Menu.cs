@@ -39,6 +39,8 @@ namespace EOA.Entity
         [Column(TypeName = "bigint")]
         public long ParentId { get; set; }
         public bool Enabled { get; set; }
+        [Required]
+        public int SortOrder { get; set; }
         public long? ModifyBy { get; set; }
         [Required]
         [Column(TypeName = "datetime")]

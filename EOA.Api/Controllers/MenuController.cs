@@ -1,4 +1,5 @@
 ﻿using EOA.Entity;
+using EOA.Helper;
 using EOA.Model.ResultModel;
 using EOA.Service;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ namespace EOA.Api.Controllers
         {
             return Ok(new Result
             {
-                Code = (int)ResultCode.Success,
+                Code = ResultCode.Success,
                 Message = "",
                 Obj = new
                 {
@@ -39,7 +40,7 @@ namespace EOA.Api.Controllers
         {
             return Ok(new Result
             {
-                Code = (int)ResultCode.Success,
+                Code = ResultCode.Success,
                 Message = "",
                 Obj = new
                 {
@@ -53,13 +54,34 @@ namespace EOA.Api.Controllers
         {
             return Ok(new Result
             {
-                Code = (int)ResultCode.Success,
+                Code = ResultCode.Success,
                 Message = "",
                 Obj = new
                 {
                     RowCount = await _menuService.Edit(menu)
                 }
             });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListMenu()
+        {
+            try
+            {
+                return Ok(new Result
+                {
+                    Code = ResultCode.Success,
+                    Message = "",
+                    Obj = new
+                    {
+                        MenuTree = await _menuService.ListMenu()
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(ResultHelper.GetExResult(ex));
+            }
         }
     }
 }

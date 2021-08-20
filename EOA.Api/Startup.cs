@@ -114,6 +114,20 @@ namespace EOA.Api
             //services.AddSession();
             #endregion
 
+            #region ¿çÓò
+            services.AddCors(options =>
+            {
+                options.AddPolicy("vue-eoa", policy =>
+                {
+                    policy.WithOrigins("http://localhost:8080/")
+                        //.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
+            #endregion
+
             #region ×¢ÈëService Repository
             services.AddCustomIOC();
             #endregion
@@ -139,6 +153,8 @@ namespace EOA.Api
 
             //app.UseSession();
 
+            app.UseCors("vue-eoa");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -157,6 +173,8 @@ namespace EOA.Api
         /// <returns></returns>
         public static IServiceCollection AddCustomIOC(this IServiceCollection services)
         {
+            services.AddScoped<IMenuRepository, MenuRepositoryImpl>();
+            services.AddScoped<IMenuService, MenuServiceImpl>();
             services.AddScoped<IUserRepository, UserRepositoryImpl>();
             services.AddScoped<IUserService, UserServiceImpl>();
             return services;

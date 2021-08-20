@@ -4,10 +4,10 @@ using System.Text;
 
 namespace EOA.Model.ResultModel
 {
-    public enum ResultCode
+    public static class ResultCode
     {
-        Success = 200,
-        Warning = 300,
-        Error = 400
+        public static int Success { get; } = 200;
+        public static int Warning { get; } = 300;
+        public static int Error { get; } = 400;
     }
 }
