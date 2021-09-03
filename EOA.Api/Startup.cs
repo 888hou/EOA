@@ -33,6 +33,16 @@ namespace EOA.Api
             Configuration = configuration;
         }
 
+        #region Log
+        public static readonly ILoggerFactory ConsoleLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddFilter((category, level) =>
+                category == DbLoggerCategory.Database.Command.Name
+                && level == LogLevel.Information)
+            .AddConsole();
+        });
+        #endregion
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -103,6 +113,7 @@ namespace EOA.Api
                 var connectionString = Configuration.GetConnectionString("EOA");
                 //var serverVersion = new MySqlServerVersion(new Version(5, 7, 32));
                 options
+                    .UseLoggerFactory(ConsoleLoggerFactory)
                     //.UseMySql(connectionString, serverVersion)
                     .UseMySql(connectionString)
                     .EnableSensitiveDataLogging() // 在日志中显示参数值
@@ -119,11 +130,12 @@ namespace EOA.Api
             {
                 options.AddPolicy("vue-eoa", policy =>
                 {
-                    policy.WithOrigins("http://localhost:8080/")
-                        //.AllowAnyOrigin()
+                    policy
+                    //.WithOrigins("http://localhost:8080/")
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
+                        .AllowAnyMethod();
+                    //.AllowCredentials();
                 });
             });
             #endregion

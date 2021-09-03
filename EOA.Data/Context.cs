@@ -1,5 +1,6 @@
 ﻿using EOA.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,12 +16,11 @@ namespace EOA.Data
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }
 
+        #region 关系
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<RoleMenu> RoleMenu { get; set; }
-
-        #region relation
-
         #endregion
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region 添加ModifyBy外键

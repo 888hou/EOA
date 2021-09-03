@@ -17,6 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EOA.Model", "EOA.Model\EOA.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EOA.Helper", "EOA.Helper\EOA.Helper.csproj", "{A1C655B9-E6EB-4C06-8104-E5D662286D99}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3FB841B5-DEF3-4772-A077-6378E58198BF}"
+	ProjectSection(SolutionItems) = preProject
+		interface-doc.md = interface-doc.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
