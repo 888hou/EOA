@@ -31,6 +31,11 @@ namespace EOA.Service.Impl
             return await _menuRepository.Edit(menu);
         }
 
+        public async Task<Menu> GetMenuById(long id)
+        {
+            return await _menuRepository.GetMenuById(id);
+        }
+
         public async Task<List<Menu>> ListMenu()
         {
             List<Menu> menus = await _menuRepository.ListMenus();

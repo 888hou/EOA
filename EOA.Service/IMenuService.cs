@@ -12,6 +12,7 @@ namespace EOA.Service
         Task<int> Del(long id);
         Task<int> Edit(Menu menu);
         #region
+        Task<Menu> GetMenuById(long id);
         Task<List<Menu>> ListMenu();
         #endregion
     }

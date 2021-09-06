@@ -64,6 +64,24 @@ namespace EOA.Api.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetMenuById(long id)
+        {
+            try
+            {
+                return Ok(new Result
+                {
+                    Code = ResultCode.Success,
+                    Message = "",
+                    Obj = await _menuService.GetMenuById(id)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(ResultHelper.GetExResult(ex));
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ListMenu()
         {
             try

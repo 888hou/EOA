@@ -13,6 +13,12 @@ namespace EOA.Repository
         Task<int> Edit(Menu menu);
         #region
         /// <summary>
+        /// 根据id获取Menu节点信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<Menu> GetMenuById(long id);
+        /// <summary>
         /// 获取所有有效Menu，并按照SortOrder排序
         /// </summary>
         /// <returns></returns>

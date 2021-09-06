@@ -34,6 +34,11 @@ namespace EOA.Repository.Impl
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<Menu> GetMenuById(long id)
+        {
+            return await _context.Menu.FindAsync(id);
+        }
+
         public Task<List<Menu>> ListMenus()
         {
             List<Menu> menus = _context.Menu
